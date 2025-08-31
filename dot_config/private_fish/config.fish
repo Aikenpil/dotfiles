@@ -3,7 +3,7 @@ set -U fish_greeting
 
 #ensure install fisher
 if not functions -q fisher
-  curl -sL https://git.io/fisher | source
+    curl -sL https://git.io/fisher | source
 end
 
 # Check if Fisher plugins have been synced in this session
@@ -11,31 +11,6 @@ if not test -f ~/.cache/fisher_synced
     echo "Updating Fisher..."
     fisher update
     touch ~/.cache/fisher_synced
-end
-
-#ensure install eza
-if ! command -q eza
-  echo "you need to install eza - https://github.com/eza-community/eza"
-end
-
-#ensure instal ripgrep
-if ! command -q rg
-  echo "you need to install ripgrep - https://github.com/BurntSushi/ripgrep"
-end
-
-#ensure install bat
-if ! command -q bat
-  echo "you need to install bat - https://github.com/sharkdp/bat"
-end
-
-#ensure install fzf
-if ! command -q fzf
-  echo "you need to install fzf - https://github.com/junegunn/fzf"
-end
-
-#ensure install delta
-if ! command -q delta
-  echo "you need to install delta - https://github.com/dandavison/delta"
 end
 
 #set nvim as default editor
@@ -50,23 +25,23 @@ end
 #dev environment configurations
 function dev_config
 
-  #add cargo to path
-  if test -x ~/.cargo/bin
-    fish_add_path --path --append ~/.cargo/bin
-  end
+    #add cargo to path
+    if test -x ~/.cargo/bin
+        fish_add_path --path --append ~/.cargo/bin
+    end
 
-  #add clang to path
-  if test -x /usr/sbin/clang
-    fish_add_path --path --append /usr/sbin/clang
-  end
+    #add clang to path
+    if test -x /usr/sbin/clang
+        fish_add_path --path --append /usr/sbin/clang
+    end
 end
 
 #user default path
 function user_paths
-  
-  fish_add_path --path /usr/local/bin /bin /usr/bin /sbin /usr/sbin
-  fish_add_path -- path ~/binaries ~/scripts
-  set -gx MANPATH /usr/local/man /usr/local/share/man 
+
+    fish_add_path --path /usr/local/bin /bin /usr/bin /sbin /usr/sbin
+    fish_add_path -- path ~/binaries ~/scripts
+    set -gx MANPATH /usr/local/man /usr/local/share/man
 end
 
 #dev_config
