@@ -9,7 +9,10 @@ local g = vim.g
 local git_repo = vim.env.GSF_REPOSITORY
 local opt = vim.opt
 
-
+opt.gdefault = true -- Always do global substitutes
+-- Use ripgrep as the grep tool
+opt.grepprg = "rg --vimgrep --smart-case"
+opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 g.lazyvim_picker = "fzf"
 g.lazyvim_cmp = "auto"
 opt.shell = "/usr/sbin/fish"
@@ -62,5 +65,3 @@ end
 --end
 --opt.undodir = undo_dir
 --opt.undofile = true -- Maintain undo history
-
-
