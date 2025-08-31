@@ -1,5 +1,5 @@
 [user]
-	email = 78743601+Aikenpil@users.noreply.github.com
+  email = 78743601+Aikenpil@users.noreply.github.com
   name = aikenpil
 
 [core]
@@ -12,6 +12,8 @@
 [delta]
   navigate = true  # use n and N to move between diff sections
   dark = true      # or light = true, or omit for auto-detection
+  line-numbers = true
+  side-by-side = true
 
 [merge]
   conflictStyle = zdiff3

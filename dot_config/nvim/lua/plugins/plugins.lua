@@ -37,13 +37,8 @@ return {
         -- the rest of your telescope config goes here
         extensions = {
           undo = {
-            -- telescope-undo.nvim config, see below
             use_delta = true,
             side_by_side = true,
-            layout_strategy = "horizontal",
-            layout_config = {
-              preview_height = 0.8,
-            }
           },
           -- other extensions:
           -- file_browser = { ... }
