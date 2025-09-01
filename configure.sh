@@ -4,10 +4,11 @@
 # Run this script as a regular user after the base system is installed.
 
 #init keyring
-sudo pacman-key --init
-sudo pacman-key --populate
-sudo pacman -Sy archlinux-keyring
-sudo pacman -Su
+echo "initializating keyring"
+sudo pacman-key --init --noconfirm
+sudo pacman-key --populate --noconfirm
+sudo pacman -Sy archlinux-keyring --noconfirm
+sudo pacman -Su --noconfirm
 
 # Define the file path
 PACMAN_CONF="/etc/pacman.conf"
