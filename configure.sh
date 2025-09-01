@@ -29,7 +29,7 @@ echo "System updated."
 
 # --- 2. Install Your Favorite Packages ---
 echo "Installing core packages..."
-sudo pacman -S --noconfirm base-devel curl git chezmoi neovim fish eza ripgrep bat fzf git-delta
+sudo pacman -S --noconfirm base-devel curl git chezmoi neovim fish fisher eza ripgrep bat fzf git-delta
 
 #installing yay
 echo "installing yay"
