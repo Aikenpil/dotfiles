@@ -6,7 +6,8 @@
 #init keyring
 sudo pacman-key --init
 sudo pacman-key --populate
-sudo pacman -S archlinux-keyring
+sudo pacman -Sy archlinux-keyring
+sudo pacman -Su
 
 # Define the file path
 PACMAN_CONF="/etc/pacman.conf"
@@ -39,7 +40,7 @@ cd
 
 # --- 3. Configure Shell (Fish) ---
 echo "Setting fish as the default shell..."
-sudo chsh -s $(which fish)
+chsh -s $(which fish)
 
 # --- 4. Dotfile Management (chezmoi) ---
 echo "Setting up dotfiles..."
