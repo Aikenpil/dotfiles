@@ -31,13 +31,12 @@ echo "System updated."
 echo "Installing core packages..."
 sudo pacman -S --noconfirm base-devel curl git chezmoi neovim fish eza ripgrep bat fzf git-delta
 
-#installing yay 
+#installing yay
 echo "installing yay"
-cd /tmp
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay
+makepkg -si --noconfirm
+cd ~
 
 # --- 3. Configure Shell (Fish) ---
 echo "Setting fish as the default shell..."
