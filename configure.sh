@@ -27,7 +27,7 @@ echo "System updated."
 
 # --- 2. Install Your Favorite Packages ---
 echo "Installing core packages..."
-sudo pacman -S --noconfirm base-devel curl git chezmoi neovim fish eza ripgrep bat fzf delta
+sudo pacman -S --noconfirm base-devel curl git chezmoi neovim fish eza ripgrep bat fzf git-delta
 
 #installing yay 
 echo "installing yay"
@@ -39,7 +39,7 @@ cd
 
 # --- 3. Configure Shell (Fish) ---
 echo "Setting fish as the default shell..."
-chsh -s $(which fish)
+sudo chsh -s $(which fish)
 
 # --- 4. Dotfile Management (chezmoi) ---
 echo "Setting up dotfiles..."
