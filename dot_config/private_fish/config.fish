@@ -1,13 +1,6 @@
 #disable fish greeting
 set -U fish_greeting
 
-# Check if Fisher plugins have been synced in this session
-if not test -f ~/.config/fisher_synced
-    echo "Updating Fisher..."
-    fisher update
-    touch ~/.config/fisher_synced
-end
-
 #set nvim as default editor
 if test -z "$NVIM"
     set -gx EDITOR nvim
