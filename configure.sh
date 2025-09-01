@@ -45,6 +45,7 @@ chsh -s $(which fish)
 # --- 4. Dotfile Management (chezmoi) ---
 echo "Setting up dotfiles..."
 chezmoi init --apply aikenpil
+fisher update
 
 # --- 5. Configuring github ssh access ---
 echo "Now you have to configure github ssh acess following this manual 
