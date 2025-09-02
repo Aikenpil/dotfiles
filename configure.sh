@@ -32,22 +32,10 @@ echo "Automating makepkg.conf changes to enable parallel compilation..."
 # 1. Enable MAKEFLAGS for parallel compilation
 sed -i "s/^#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j${NUM_CORES}\"/" /etc/makepkg.conf
 
-# If the line was not found or has a different format, provide a fall-back message.
-if ! grep -q "^MAKEFLAGS=\"-j${NUM_CORES}\"" /etc/makepkg.conf; then
-	echo "Warning: The MAKEFLAGS line could not be automatically modified."
-	echo "Please open /etc/makepkg.conf and manually add or change the line to:"
-	echo "MAKEFLAGS=\"-j${NUM_CORES}\""
-fi
-
 # 2. Enable multi-threaded compression (xz)
-sed -i "s/^COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -z - --threads=0)/" /etc/makepkg.conf
-
-# If the line was not found, provide a fall-back message.
-if ! grep -q "threads=0" /etc/makepkg.conf; then
-	echo "Warning: The COMPRESSXZ line could not be automatically modified."
-	echo "Please open /etc/makepkg.conf and manually add or change the line to:"
-	echo "COMPRESSXZ=(xz -c -z - --threads=0)"
-fi
+sudo sed -i "s/^#COMPRESSZST=(.*)/COMPRESSZST=(zstd -c -z -q -T0 -)/" "/etc/makepkg.conf"
+sudo sed -i "s/^#COMPRESSXZ=(.*)/COMPRESSXZ=(xz -c -z -T0 -)/" "/etc/makepkg.conf"
+sudo sed -i "s/^#COMPRESSGZ=(.*)/COMPRESSGZ=(pigz -c -f -n -T0 -)/" "/etc/makepkg.conf"
 
 # --- 1. System Update ---
 echo "==== Updating the system ===="
