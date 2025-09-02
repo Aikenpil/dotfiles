@@ -24,13 +24,8 @@ else
 	echo "ParallelDownloads setting already exists in $PACMAN_CONF"
 fi
 
-# Get the number of CPU cores
-NUM_CORES=$(nproc)
-
-echo "Automating makepkg.conf changes to enable parallel compilation..."
-
 # 1. Enable MAKEFLAGS for parallel compilation
-sed -i "s/^#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j${NUM_CORES}\"/" /etc/makepkg.conf
+sudo sed -i "s/^#MAKEFLAGS=\".*\"/MAKEFLAGS=\"-j$(nproc)\"/" "/etc/makepkg.conf"
 
 # 2. Enable multi-threaded compression (xz)
 sudo sed -i "s/^#COMPRESSZST=(.*)/COMPRESSZST=(zstd -c -z -q -T0 -)/" "/etc/makepkg.conf"
