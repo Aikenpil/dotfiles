@@ -50,7 +50,7 @@ cd ~
 
 #installing aur packages
 echo "==== Installing AUR packages ===="
-yay -S --needed --noconfirm asdf
+yay -S --needed --noconfirm asdf-vm
 
 # --- 3. Configure Shell (Fish) ---
 echo "==== Setting fish as the default shell ===="
