@@ -13,9 +13,9 @@ opt.gdefault = true -- Always do global substitutes
 -- Use ripgrep as the grep tool
 opt.grepprg = "rg --vimgrep --smart-case"
 opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
-g.lazyvim_picker = "fzf"
+g.lazyvim_picker = "fzf-lua"
 g.lazyvim_cmp = "auto"
-opt.shell = "/usr/sbin/fish"
+opt.shell = "fish"
 opt.history = 999 -- Keep 999 changes of undo history
 
 if fn.has('wsl') == 1 then
