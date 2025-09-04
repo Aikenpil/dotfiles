@@ -19,9 +19,6 @@ return {
       duration = 300,
       pattern = { "*" },
       ignored_filetypes = { "neo-tree", "fugitive", "TelescopePrompt", "mason", "lazy" },
-      -- ignore_cb is in comma as there is a default implementation. Setting
-      -- to nil will mean no default os called.
-      -- ignore_cb = nil,
     },
   },
 
@@ -32,16 +29,14 @@ return {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
     },
+    event = "LspAttach",
     config = function()
       require("telescope").setup({
-        -- the rest of your telescope config goes here
         extensions = {
           undo = {
             use_delta = true,
             side_by_side = true,
           },
-          -- other extensions:
-          -- file_browser = { ... }
         },
       })
       require("telescope").load_extension("undo")

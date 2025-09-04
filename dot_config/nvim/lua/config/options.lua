@@ -31,7 +31,7 @@ if fn.has('wsl') == 1 then
     },
   }
 else
-  g.clipboard = "wayclip"
+  g.clipboard = "xclip"
 end
 
 -- enable copy to/from clipboard
