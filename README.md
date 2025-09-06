@@ -1,5 +1,5 @@
 # Dotfiles
-These dotfiles are my currently used configurations for fish, neovim (lazyvim), git and a bash script to set it up for a arch linux environment
+These dotfiles are my currently used configurations for fish, neovim (lazyvim), git and a bash script to set up a fresh arch linux environment with it
 
 ## Installation
 For the versioning of my dotfiles i used the dotfiles manager **chezmoi**
