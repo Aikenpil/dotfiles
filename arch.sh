@@ -39,7 +39,7 @@ echo "==== System updated ===="
 
 # --- 2. Install Your Favorite Packages ---
 echo "==== Installing core packages ===="
-sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang neovim fish fisher eza ripgrep fd bat fzf git-delta reflector mise
+sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang rustup npm neovim fish fisher eza ripgrep fd bat fzf git-delta reflector mise
 
 #installing yay
 echo "==== Installing yay ===="
