@@ -39,7 +39,7 @@ echo "==== System updated ===="
 
 # --- 2. Install Your Favorite Packages ---
 echo "==== Installing core packages ===="
-sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang neovim fish fisher eza ripgrep fd bat fzf git-delta reflector
+sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang neovim fish fisher eza ripgrep fd bat fzf git-delta reflector mise
 
 #installing yay
 echo "==== Installing yay ===="
@@ -50,7 +50,7 @@ cd ~
 
 #installing aur packages
 echo "==== Installing AUR packages ===="
-yay -S --needed --noconfirm asdf-vm unzip zip
+yay -S --needed --noconfirm unzip zip
 
 # --- 3. Configure Shell (Fish) ---
 echo "==== Setting fish as the default shell ===="
