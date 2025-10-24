@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 local aucmd = vim.api.nvim_create_autocmd
-local opts = { noremap = true, silent = true }
 
 -- Telescope: keymaps
 map("n", "<A-/>", "<cmd>Telescope keymaps<CR>", { desc = "see all keymaps" })
@@ -20,17 +19,19 @@ map("x", "<leader>x", "<esc> :x<CR>", { noremap = true, silent = true, desc = "S
 map("i", "<leader>x", "<esc> :x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
 
 -- Telescope:
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
-map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "telescope find all files" })
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
-map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
-map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leader>ff", function() require("telescope.builtin").find_files() end,  { noremap = true, silent = true, desc = "telescope find files" })
+map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { noremap = true, silent = true, desc = "telescope find all files" })
+map("n", "<leader>fg", function() require("telescope.builtin").live_grep() end, { noremap = true, silent = true, desc = "telescope live grep" })
+map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { noremap = true, silent = true, desc = "telescope find marks" })
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { noremap = true, silent = true, desc = "telescope find oldfiles" })
+map("n", "<leader>fb", function() require("telescope.builtin").current_buffer_fuzzy_find() end,  { noremap = true, silent = true, desc = "telescope fuzzy find in buffer" })
+map("n", "<leader>fy", function() require("telescope").extensions.neoclip.default({}) end, { noremap = true, silent = true, desc = "telescope neoclip" })
+map("n", "<leader>fd", function() require("telescope.builtin").lsp_definitions() end, { noremap = true, silent = true, desc = "telescope lsp definitions" })
+map("n", "<leader>fdt", function() require("telescope.builtin").lsp_type_definitions() end, { noremap = true, silent = true, desc = "telescope lsp type definitions" })
+map("n", "<leader>fr", function() require("telescope.builtin").lsp_references() end, { noremap = true, silent = true, desc = "telescope lsp references" })
+map("n", "<leader>fi", function() require("telescope.builtin").lsp_implementations({}) end, { noremap = true, silent = true, desc = "telescope lsp implementations" })
+map("n", "<leader>fdi", function() require("telescope.builtin").diagnostics() end, { noremap = true, silent = true, desc = "telescope lsp diagnostics" })
+map("n", "<leader>fq", function() require("telescope.builtin").quickfix() end, { noremap = true, silent = true, desc = "telescope lsp quick fix" })
 
 -- Scroll with Mouse
 map("", "<ScrollWheelUp>", "<C-Y>", { noremap = true, silent = true, desc = "Scroll Up" })
@@ -90,8 +91,6 @@ map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- ToggleTerm:
-map("n", "<leader>d", ':term<CR>', { noremap = true, silent = true, desc = "open terminal" })
-map("i", "<leader>d", ':term<CR>i', { noremap = true, silent = true, desc = "Open terminal in insert mode" })
 map("n", "<leader>t", ":ToggleTerm<CR>", { noremap = true, silent = true, desc = "toggle terminal" })
 map("n", "<leader>tx", ":ToggleTerm close<CR>", { noremap = true, silent = true, desc = "close terminal" })
 
@@ -103,41 +102,36 @@ callback = function(event)
 
     -- these will be buffer-local keybindings
     -- because they only work if you have an active language server
-    -- Diagnostics with Trouble
     -- LSP bindings
     
-    map("n", "gd", function() require("goto-preview").goto_preview_definition({}) end, op)
-    map("n", "gD", function() require("goto-preview").goto_preview_declaration({}) end, op)
-    map("n", "gi", function() require("goto-preview").goto_preview_implementation({}) end, op)
-    map("n", "gI", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, op)
-    map("n", "gt", function() require("goto-preview").goto_preview_type_definition({}) end, op)
-    map("n", "gr", function() require("goto-preview").goto_preview_references({}) end, op)
+    map("n", "gd", function() require("goto-preview").goto_preview_definition({}) end, { buffer = event.buf, desc = "Go to definition"})
+    map("n", "gD", function() require("goto-preview").goto_preview_declaration({}) end, { buffer = event.buf, desc = "Go to declaration"})
+    map("n", "gi", function() require("goto-preview").goto_preview_implementation({}) end, { buffer = event.buf, desc = "Go to implementation"})
+    map("n", "gI", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { buffer = event.buf, desc = "Toggle inlay hints"})
+    map("n", "gt", function() require("goto-preview").goto_preview_type_definition({}) end, { buffer = event.buf, desc = "Go to type definition"})
+    map("n", "gr", function() require("goto-preview").goto_preview_references({}) end, { buffer = event.buf, desc = "Go to references"})
 
     map("n", "[d", function()
     if vim.tbl_isempty(vim.diagnostic.get(0)) then
-        require("trouble").close("diagnostics")
-        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Trouble" })
+        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Diagnostics" })
     else
         vim.diagnostic.goto_prev()
-        require("trouble").prev({ mode = "diagnostics" })
     end
-    end, op)
+    end, { buffer = event.buf, desc = "Navigate to previous diagnostic"})
 
     map("n", "]d", function()
     if vim.tbl_isempty(vim.diagnostic.get(0)) then
-        require("trouble").close("diagnostics")
-        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Trouble" })
+        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Diagnostics" })
     else
         vim.diagnostic.goto_next()
-        require("trouble").next({ mode = "diagnostics" })
     end
-    end, op)
-    -- map("n", "K", function() vim.lsp.buf.hover() end, op)
-    map("n", "gs", function() vim.lsp.buf.signature_help() end, op)
-    map("n", "<leader>rn", function() vim.lsp.buf.rename() end, op)
+    end, { buffer = event.buf, desc = "Navigate to next diagnostic"})
+    -- map("n", "K", function() vim.lsp.buf.hover() end, { buffer = event.buf, desc = ""})
+    map("n", "gs", function() vim.lsp.buf.signature_help() end, { buffer = event.buf, desc = "Show signature help"})
+    map("n", "<leader>rn", function() vim.lsp.buf.rename() end, { buffer = event.buf, desc = "Rename symbol"})
     -- Format and Code Actions
-    map({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, op)
-    map({ "n", "x" }, "<leader>ca", function() require("fastaction").code_action() end, op)
+    map({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, { buffer = event.buf, desc = "Format code"})
+    map({ "n", "x" }, "<leader>ca", function() require("fastaction").code_action() end, { buffer = event.buf, desc = "Trigger code action"})
 end,
 })
 --}}}

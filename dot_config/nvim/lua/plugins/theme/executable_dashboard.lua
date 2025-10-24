@@ -50,10 +50,10 @@ return {
           },
           {
             icon = "󰝰 ",
-            desc = "Neo Tree",
+            desc = "Directory explorer",
             group = "@type",
-            action = "Neotree toggle",
-            key = "n",
+            action = "Oil .",
+            key = "e",
           },
         },
       },
