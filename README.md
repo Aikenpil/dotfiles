@@ -13,8 +13,8 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
 ```
 
 ## List of features
-### Fish shell
-- **fzf**: Fzf plugin for Fish [fzf.fish](https://github.com/PatrickF1/fzf.fis)
+### zsh
+- **zsh-history-substring-search**: [fzf.fish](https://github.com/PatrickF1/fzf.fis)
 - **autopair**:  Auto-complete matching pairs in the Fish command line [autopair.fish](https://github.com/jorgebucaran/autopair.fish)
 - **sponge**: Clean fish history from typos automatically [sponge.fish](https://github.com/meaningful-ooo/sponge)
 - **z**:  Pure-fish z directory jumping [z.fish](https://github.com/jethrokuan/z)
