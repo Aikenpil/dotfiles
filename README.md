@@ -14,11 +14,11 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
 
 ## List of features
 ### zsh
-- **zsh-history-substring-search**: [fzf.fish](https://github.com/PatrickF1/fzf.fis)
-- **autopair**:  Auto-complete matching pairs in the Fish command line [autopair.fish](https://github.com/jorgebucaran/autopair.fish)
-- **sponge**: Clean fish history from typos automatically [sponge.fish](https://github.com/meaningful-ooo/sponge)
-- **z**:  Pure-fish z directory jumping [z.fish](https://github.com/jethrokuan/z)
-- **fish-async-prompt**: Make your prompt asynchronous to improve the reactivity [fish-async-prompt.fish](https://github.com/acomagu/fish-async-prompt)
+- **zsh-history-substring-search**: Search through Zsh history by typing a substring of the command [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
+- **zsh-syntax-highlighting**: Provides syntax highlighting for the Zsh command line [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- **zsh-autopair**: Auto-complete matching pairs in the Zsh command line [zsh-autopair](https://github.com/hlissner/zsh-autopair)
+- **zsh-autosuggestions**: Suggest commands as you type based on your history [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- **zsh-completions**: Add more advanced completions for a wide variety of commands [zsh-completions](https://github.com/zsh-users/zsh-completions)
 
 ### Neovim
 - **bufferin**: Efficiently switch between open buffers with keybindings.
