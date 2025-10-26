@@ -39,7 +39,7 @@ echo "==== System updated ===="
 
 # --- 2. Install Your Favorite Packages ---
 echo "==== Installing core packages ===="
-sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang rustup npm neovim fish fisher eza ripgrep fd bat fzf zoxide git-delta reflector mise
+sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang rustup npm neovim eza ripgrep fd bat fzf git-delta reflector mise zsh 
 
 #installing yay
 echo "==== Installing yay ===="
@@ -50,21 +50,19 @@ cd ~
 
 #installing aur packages
 echo "==== Installing AUR packages ===="
-yay -S --needed --noconfirm unzip zip
+yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd 
 
-# --- 3. Configure Shell (Fish) ---
+# --- 3. Configure Shell (zsh) ---
 echo "==== Setting fish as the default shell ===="
-sudo chsh -s "$(which fish)" "$(whoami)"
+sudo chsh -s "$(which zsh)" "$(whoami)"
 
 # --- 4. Dotfile Management (chezmoi) ---
 echo "==== Setting up dotfiles ===="
 chezmoi init --apply aikenpil
 
-# --- 5. Updating fish plugins ---
-echo "==== updating fish plugins"
-fish
-fisher update
-exit
+# --- 5. Updating shell plugins ---
+echo "==== updating shell plugins"
+antidote update
 
 # --- 5. Configuring github ssh access ---
 echo "**** Now you have to configure github ssh acess following this manual ****

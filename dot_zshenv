@@ -1,0 +1,3 @@
+typeset -U path PATH
+path=(~/bin /usr/bin/ .local/bin $path)
+export PATH

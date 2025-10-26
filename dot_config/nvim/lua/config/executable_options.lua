@@ -21,7 +21,6 @@ o.undofile = true  -- Enable undo files for persistent undo history
 o.undodir = vim.fn.stdpath("data") .. "/undo"  -- Set undo directory
 o.undolevels = 1000  -- Increase the number of undo levels to 1000
 o.undoreload = 10000  -- Maximum lines to keep in undo history for large files
-o.inccommand = "nosplit"  -- Show incremental results for certain commands like `:s`
 o.lazyredraw = true  -- Redraw only when necessary to improve performance
 o.textwidth = 80  -- Wrap text at 80 characters
 o.inccommand = "split"  -- Show incremental results in a preview split
@@ -30,7 +29,7 @@ o.splitright = true  -- Open vertical splits to the right of the current window
 o.numberwidth = 4  -- Show line numbers in a 4-character wide column
 o.termguicolors = true  -- Enable true color support in the terminal
 o.showmatch = true  -- Enable show matching parenthesis
-o.shell = "fish"
+o.shell = "zsh"
 
 if vim.fn.has('wsl') == 1 then
   vim.g.clipboard = {
