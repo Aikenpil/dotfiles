@@ -39,7 +39,7 @@ echo "==== System updated ===="
 
 # --- 2. Install Your Favorite Packages ---
 echo "==== Installing core packages ===="
-sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang rustup npm neovim eza ripgrep fd bat fzf git-delta reflector mise zsh 
+sudo pacman -S --needed --noconfirm base-devel curl git chezmoi cmake clang rustup npm neovim eza ripgrep fd bat fzf reflector mise zsh 
 
 #installing yay
 echo "==== Installing yay ===="
@@ -53,7 +53,7 @@ echo "==== Installing AUR packages ===="
 yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd 
 
 # --- 3. Configure Shell (zsh) ---
-echo "==== Setting fish as the default shell ===="
+echo "==== Setting zsh as the default shell ===="
 sudo chsh -s "$(which zsh)" "$(whoami)"
 
 # --- 4. Dotfile Management (chezmoi) ---
