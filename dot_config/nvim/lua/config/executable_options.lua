@@ -46,3 +46,6 @@ if vim.fn.has('wsl') == 1 then
 --else
   --g.clipboard = "xclip"
 end
+
+o.background = "dark"
+vim.cmd("colorscheme modus")

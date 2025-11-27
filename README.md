@@ -59,8 +59,6 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
   [ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim)
 - **frecency (telescope)**: A Telescope extension that helps you find files based on how often you've accessed them.
   [frecency.nvim](https://github.com/nvim-telescope/telescope-frecency.nvim)
-- **carbonfox**: A beautiful and easy-to-configure colorscheme for Neovim.
-  [carbonfox.nvim](https://github.com/owent-utils/carbonfox)
 - **dashboard**: A personalized start screen that shows recent files, sessions, and more when Neovim is opened.
   [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 - **lualine**: A fast and customizable statusline for Neovim written in Lua.

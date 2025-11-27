@@ -1,9 +1,3 @@
-local carbonfox = {
-	"EdenEast/nightfox.nvim"
+return {
+  "miikanissi/modus-themes.nvim"
 }
-
-carbonfox.config = function()
-	vim.cmd.colorscheme("carbonfox")
-end
-
-return carbonfox
