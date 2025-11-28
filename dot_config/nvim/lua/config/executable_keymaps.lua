@@ -10,13 +10,10 @@ map('n', "<leader>e", function() require("oil").open() end, { noremap = true, si
 -- Save Quit eXit
 map("n", "<leader>s", ":w<CR>:e<CR>", { noremap = true, silent = true, desc = "Save and Reload" })
 map("x", "<leader>s", "<esc> :w<CR>:e<CR>", { noremap = true, silent = true, desc = "Save and Reload" })
-map("i", "<leader>s", "<esc> :w<CR>:e<CR>i", { noremap = true, silent = true, desc = "Save and Reload" })
 map("n", "<leader>q", ":q!<CR>", { noremap = true, silent = true, desc = "Quit without Saving" })
 map("x", "<leader>q", "<esc> :q!<CR>", { noremap = true, silent = true, desc = "Quit without Saving" })
-map("i", "<leader>q", "<esc> :q!<CR>", { noremap = true, silent = true, desc = "Quit without Saving" })
 map("n", "<leader>x", ":x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
 map("x", "<leader>x", "<esc> :x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
-map("i", "<leader>x", "<esc> :x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
 
 -- Telescope:
 map("n", "<leader>ff", function() require("telescope.builtin").find_files() end,  { noremap = true, silent = true, desc = "telescope find files" })
@@ -33,12 +30,6 @@ map("n", "<leader>fi", function() require("telescope.builtin").lsp_implementatio
 map("n", "<leader>fdi", function() require("telescope.builtin").diagnostics() end, { noremap = true, silent = true, desc = "telescope lsp diagnostics" })
 map("n", "<leader>fq", function() require("telescope.builtin").quickfix() end, { noremap = true, silent = true, desc = "telescope lsp quick fix" })
 
--- Scroll with Mouse
-map("", "<ScrollWheelUp>", "<C-Y>", { noremap = true, silent = true, desc = "Scroll Up" })
-map("i", "<ScrollWheelUp>", "<Esc><C-Y>", { noremap = true, silent = true, desc = "Scroll Up" })
-map("", "<ScrollWheelDown>", "<C-E>", { noremap = true, silent = true, desc = "Scroll Down" })
-map("i", "<ScrollWheelDown>", "<Esc><C-E>", { noremap = true, silent = true, desc = "Scroll Down" })
-
 -- window management
 map("n", "<leader>sv", "<C-w>v", {desc="Split window vertically"})
 map("n", "<leader>sh", "<C-w>s", {desc="Split window horizontally"})
@@ -48,14 +39,11 @@ map("n", "<leader>sx", "<cmd>close<CR>", {desc="Close current split"})
 -- Move to Previous and Next Buffer
 map("n", "<leader>h", ":bprev<cr>", { noremap = true, silent = true, desc = "Next Buffer" })
 map("x", "<leader>h", "<esc> :bprev<cr>", { noremap = true, silent = true, desc = "Next Buffer" })
-map("i", "<leader>h", "<esc> :bprev<cr>", { noremap = true, silent = true, desc = "Next Buffer" })
 map("n", "<leader>l", ":bnext<cr>", { noremap = true, silent = true, desc = "Previous Buffer" })
 map("x", "<leader>l", "<esc> :bnext<cr>", { noremap = true, silent = true, desc = "Previous Buffer" })
-map("i", "<leader>l", "<esc> :bnext<cr>", { noremap = true, silent = true, desc = "Previous Buffer" })
 -- Close Current Buffer
 map("n", "<leader>bd", ":bd<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
 map("x", "<leader>bd", "<esc> :bd<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
-map("i", "<leader>bd", "<esc> :bd<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
 
 -- Bufferin:
 map('n', '<leader>b', '<cmd>Bufferin<cr>', { desc = 'Toggle Bufferin' })
