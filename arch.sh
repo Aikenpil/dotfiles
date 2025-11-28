@@ -50,7 +50,7 @@ cd ~
 
 #installing aur packages
 echo "==== Installing AUR packages ===="
-yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd 
+yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd bear
 
 # --- 3. Configure Shell (zsh) ---
 echo "==== Setting zsh as the default shell ===="
