@@ -9,8 +9,8 @@ return {
         config = function()
             require('lsp-progress').setup({})
             require('lualine').setup({
-                options = { theme = 'iceberg_dark' },
-                extensions = { 'lazy', 'oil', 'toggleterm', 'nvim-dap-ui', 'fzf' }
+                options = { theme = '16color'},
+                extensions = { 'lazy', 'oil', 'toggleterm', 'nvim-dap-ui', 'fzf', }
             })
         end,
     },

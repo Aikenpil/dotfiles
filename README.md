@@ -41,8 +41,8 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
   [twilight.nvim](https://github.com/folke/twilight.nvim)
 - **oil**: Modern file explorer, similar to NERDTree or netrw, with a clean interface.
   [oil.nvim](https://github.com/stevearc/oil.nvim)
-- **undotree**: Visualize and manage your undo history for better code recovery.
-  [undotree.nvim](https://github.com/mbbill/undotree)
+- **Atone**: Visualize and manage your undo history for better code recovery.
+  [atone.nvim](https://github.com/XXiaoA/atone.nvim)
 - **mason**: Manages external tooling like linters, formatters, and servers directly from Neovim.
   [mason.nvim](https://github.com/williamboman/mason.nvim)
 - **nvim-cmp**: A completion plugin that provides intelligent text suggestions as you type.
