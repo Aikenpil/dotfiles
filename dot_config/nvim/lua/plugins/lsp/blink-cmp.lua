@@ -10,6 +10,8 @@ return {
   -- If you use nix, you can build from source using latest nightly rust with:
   -- build = 'nix run .#build-plugin',
 
+  event = { "InsertEnter", "CmdlineEnter" },
+
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
@@ -34,7 +36,20 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = { 
+      documentation = { auto_show = true },
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      list = {
+        selection = {
+          preselect = true,
+          auto_insert = false,
+        },
+      }, 
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`

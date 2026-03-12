@@ -62,6 +62,7 @@ return {
       },
       -- Format on save using null-ls instead of lsp server.
       on_attach = function(current_client, bufnr)
+        current_client.offset_encoding = "utf-8"
         if current_client:supports_method("textDocument/formatting") then
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
