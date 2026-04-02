@@ -43,7 +43,7 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
   [atone.nvim](https://github.com/XXiaoA/atone.nvim)
 - **mason**: Manages external tooling like linters, formatters, and servers directly from Neovim.
   [mason.nvim](https://github.com/williamboman/mason.nvim)
-- **nvim-cmp**: A completion plugin that provides intelligent text suggestions as you type.
+- **blink.cmp**: A completion plugin that provides intelligent text suggestions as you type.
   [blink.cmp](https://github.com/saghen/blink.cmp)
 - **goto-preview**: Previews the result of `goto` commands (like `gd` for GoToDefinition).
   [goto-preview.nvim](https://github.com/rmagatti/goto-preview)
