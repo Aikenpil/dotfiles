@@ -1,12 +1,10 @@
 # Dotfiles
-These dotfiles are my currently used configurations for fish, neovim (lazyvim), git and a bash script to set up a fresh arch linux environment with it
+These dotfiles are my currently used configurations for zsh, neovim, git (and soon hyprland)
 
 ## Installation
 For the versioning of my dotfiles i used the dotfiles manager **chezmoi**
 
 To replicate my configs you should first install chezmoi using your preferred package manager, then make a backup of your configurations
-
-Note that my .gitconfig will not work for you
 
 ```sh
 chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
@@ -46,7 +44,7 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
 - **mason**: Manages external tooling like linters, formatters, and servers directly from Neovim.
   [mason.nvim](https://github.com/williamboman/mason.nvim)
 - **nvim-cmp**: A completion plugin that provides intelligent text suggestions as you type.
-  [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+  [blink.cmp](https://github.com/saghen/blink.cmp)
 - **goto-preview**: Previews the result of `goto` commands (like `gd` for GoToDefinition).
   [goto-preview.nvim](https://github.com/rmagatti/goto-preview)
 - **telescope**: A fuzzy finder for Neovim that lets you search files, buffers, and more.
