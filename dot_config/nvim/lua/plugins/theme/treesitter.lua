@@ -1,22 +1,28 @@
 return {
-  {
-    "arborist-ts/arborist.nvim",
-    opts = {
-      prefer_wasm = true,
-      update_cadence = "weekly",
-      -- optionally ensure some languages are always available
+  "romus204/tree-sitter-manager.nvim",
+  cmd = "TSManager",
+  dependencies = {}, -- tree-sitter CLI must be installed system-wide
+  config = function()
+    require("tree-sitter-manager").setup({
+      -- Default Options
       ensure_installed = {
         "c",
         "cpp",
         "rust",
         "zig",
-        "cmake",
         "make",
         "llvm",
+        "cmake",
         "lua",
         "regex",
         "diff",
-      },
-    },
-  },
-}
+      }, -- list of parsers to install at the start of a neovim session
+      -- border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
+      -- auto_install = false, -- if enabled, install missing parsers when editing a new file
+      -- highlight = true, -- treesitter highlighting is enabled by default
+      -- languages = {}, -- override or add new parser sources
+      -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
+      -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
+    })
+  end
+} 
