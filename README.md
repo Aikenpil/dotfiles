@@ -2,9 +2,7 @@
 These dotfiles are my currently used configurations for zsh, neovim, git (and soon hyprland)
 
 ## Installation
-For the versioning of my dotfiles i used the dotfiles manager **chezmoi**
-
-To replicate my configs you should first install chezmoi using your preferred package manager, then make a backup of your configurations
+To aid the versioning my dotfiles i used **chezmoi**
 
 ```sh
 chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
@@ -61,5 +59,5 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
   [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 - **lualine**: A fast and customizable statusline for Neovim written in Lua.
   [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- **nvim-treesitter**: An essential plugin for syntax highlighting, code navigation, and more based on Treesitter.
-  [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- **nvim-treesitter-manager**: Parser manager for treesitter.
+  [nvim-treesitter-manager](https://github.com/romus204/tree-sitter-manager.nvim)
