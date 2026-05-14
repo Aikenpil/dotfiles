@@ -1,6 +1,6 @@
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
-  event = "VeryLazy",
+  lazy = false,
   dependencies = {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
@@ -28,6 +28,7 @@ return {
         -- { "bashls", auto_update = true },
 
         "clangd",
+        "serve-d",
         "zls",
         "codelldb",
         "cmakelang",
@@ -37,7 +38,7 @@ return {
       auto_update = true, -- Default: false
       run_on_start = true, -- Default: true
       start_delay = 1000, -- 1 second delay ( Default: 0 )
-      debounce_hours = 5, -- at least 1 hour between attempts to install/update
+      debounce_hours = 12, -- at least 12 hour between attempts to install/update
       integrations = {
         ['mason-lspconfig'] = true,
         ['mason-null-ls'] = true,

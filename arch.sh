@@ -50,19 +50,15 @@ cd ~
 
 #installing aur packages
 echo "==== Installing AUR packages ===="
-yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd bear
+yay -S --needed --noconfirm unzip zip zsh-antidote ttf-hack-nerd bear tree-sitter-cli
 
-# --- 3. Configure Shell (zsh) ---
-echo "==== Setting zsh as the default shell ===="
-sudo chsh -s "$(which zsh)" "$(whoami)"
-
-# --- 4. Dotfile Management (chezmoi) ---
+# --- 3. Dotfile Management (chezmoi) ---
 echo "==== Setting up dotfiles ===="
 chezmoi init --apply aikenpil
 
-# --- 5. Updating shell plugins ---
-echo "==== updating shell plugins"
-antidote update
+# --- 4. Configure Shell (zsh) ---
+echo "==== Setting zsh as the default shell ===="
+sudo chsh -s "$(which zsh)" "$(whoami)"
 
 # --- 5. Configuring github ssh access ---
 echo "**** Now you have to configure github ssh acess following this manual ****
