@@ -43,9 +43,31 @@ if vim.fn.has('wsl') == 1 then
       ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
   }
---else
-  --g.clipboard = "xclip"
+else
+  vim.g.clipboard = "xclip"
 end
 
 o.background = "dark"
 vim.cmd("colorscheme modus")
+
+local f = vim.fn.stdpath("data") .. "/lazy-weekly-update"
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local stat = vim.uv.fs_stat(f)
+    local last = stat and stat.mtime.sec or 0
+
+    if os.time() - last > 604800 then -- 7 dias
+      vim.schedule(function()
+        require("lazy").update({ show = false })
+        vim.cmd("MasonToolsUpdate")
+      end)
+
+      local fd = vim.uv.fs_open(f, "w", 438)
+      if fd then
+        vim.uv.fs_close(fd)
+      end
+    end
+  end,
+})
+

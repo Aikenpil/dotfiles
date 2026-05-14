@@ -22,7 +22,6 @@ map("n", "<leader>fg", function() require("telescope.builtin").live_grep() end, 
 map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { noremap = true, silent = true, desc = "telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { noremap = true, silent = true, desc = "telescope find oldfiles" })
 map("n", "<leader>fb", function() require("telescope.builtin").current_buffer_fuzzy_find() end,  { noremap = true, silent = true, desc = "telescope fuzzy find in buffer" })
-map("n", "<leader>fy", function() require("telescope").extensions.neoclip.default({}) end, { noremap = true, silent = true, desc = "telescope neoclip" })
 map("n", "<leader>fd", function() require("telescope.builtin").lsp_definitions() end, { noremap = true, silent = true, desc = "telescope lsp definitions" })
 map("n", "<leader>fdt", function() require("telescope.builtin").lsp_type_definitions() end, { noremap = true, silent = true, desc = "telescope lsp type definitions" })
 map("n", "<leader>fr", function() require("telescope.builtin").lsp_references() end, { noremap = true, silent = true, desc = "telescope lsp references" })
@@ -30,7 +29,7 @@ map("n", "<leader>fi", function() require("telescope.builtin").lsp_implementatio
 map("n", "<leader>fdi", function() require("telescope.builtin").diagnostics() end, { noremap = true, silent = true, desc = "telescope lsp diagnostics" })
 map("n", "<leader>fq", function() require("telescope.builtin").quickfix() end, { noremap = true, silent = true, desc = "telescope lsp quick fix" })
 
--- window management
+-- Window management
 map("n", "<leader>sv", "<C-w>v", {desc="Split window vertically"})
 map("n", "<leader>sh", "<C-w>s", {desc="Split window horizontally"})
 map("n", "<leader>se", "<C-w>=", {desc="Make splits equal size"})
@@ -60,24 +59,6 @@ map('n', '<C-k>', require('smart-splits').move_cursor_up, { desc = "Move cursor 
 map('n', '<C-l>', require('smart-splits').move_cursor_right, { desc = "Move cursor to right split" })
 map('n', '<C-\\>', require('smart-splits').move_cursor_previous, { desc = "Move cursor to previous split" })
 
-
--- Move: Normal-mode commands
-map("n", "lj", ":MoveLine(1)<CR>", { noremap = true, silent = true, desc = "Move current line down" })
-map("n", "lk", ":MoveLine(-1)<CR>", { noremap = true, silent = true, desc = "Move current line up" })
-map("n", "<leader>wf", ":MoveWord(1)<CR>", { noremap = true, silent = true, desc = "Move current word forward" })
-map("n", "<leader>wb", ":MoveWord(-1)<CR>", { noremap = true, silent = true, desc = "Move current word backward" })
-map("n", "<Shift>|", function() require("multiple-cursors").align() end, { noremap = true, silent = true, desc = "Align with multiple cursors" })
--- Move: Visual-mode commands
-map("x", "<A-j>", ":MoveBlock(1)<CR>", { noremap = true, silent = true, desc = "Move selected block down" })
-map("x", "<A-k>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true, desc = "Move selected block up" })
-map("x", "<A-h>", ":MoveHBlock(-1)<CR>", { noremap = true, silent = true, desc = "Move selected block left" })
-map("x", "<A-l>", ":MoveHBlock(1)<CR>", { noremap = true, silent = true, desc = "Move selected block right" })
-
-
--- Comment
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
 -- ToggleTerm:
 map("n", "<leader>t", ":ToggleTerm<CR>", { noremap = true, silent = true, desc = "toggle terminal" })
 map("n", "<leader>tx", ":ToggleTerm close<CR>", { noremap = true, silent = true, desc = "close terminal" })
@@ -92,34 +73,20 @@ callback = function(event)
     -- because they only work if you have an active language server
     -- LSP bindings
     
-    map("n", "gd", function() require("goto-preview").goto_preview_definition({}) end, { buffer = event.buf, desc = "Go to definition"})
-    map("n", "gD", function() require("goto-preview").goto_preview_declaration({}) end, { buffer = event.buf, desc = "Go to declaration"})
-    map("n", "gi", function() require("goto-preview").goto_preview_implementation({}) end, { buffer = event.buf, desc = "Go to implementation"})
+    map("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, desc = "Go to definition" })
+    map("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "Go to declaration" })
+    map("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, desc = "Go to implementation" })
     map("n", "gI", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { buffer = event.buf, desc = "Toggle inlay hints"})
-    map("n", "gt", function() require("goto-preview").goto_preview_type_definition({}) end, { buffer = event.buf, desc = "Go to type definition"})
-    map("n", "gr", function() require("goto-preview").goto_preview_references({}) end, { buffer = event.buf, desc = "Go to references"})
-
-    map("n", "[d", function()
-    if vim.tbl_isempty(vim.diagnostic.get(0)) then
-        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Diagnostics" })
-    else
-        vim.diagnostic.goto_prev()
-    end
-    end, { buffer = event.buf, desc = "Navigate to previous diagnostic"})
-
-    map("n", "]d", function()
-    if vim.tbl_isempty(vim.diagnostic.get(0)) then
-        vim.notify("No diagnostic errors found", vim.log.levels.INFO, { title = "Diagnostics" })
-    else
-        vim.diagnostic.goto_next()
-    end
-    end, { buffer = event.buf, desc = "Navigate to next diagnostic"})
-    -- map("n", "K", function() vim.lsp.buf.hover() end, { buffer = event.buf, desc = ""})
+    map("n", "gt", vim.lsp.buf.type_definition, { buffer = event.buf, desc = "Go to type definition" })
+    map("n", "gr", vim.lsp.buf.references, { buffer = event.buf, desc = "Go to references" })
+    map("n", "[d", vim.diagnostic.goto_prev, { buffer = event.buf, desc = "Prev diagnostic" })
+    map("n", "]d", vim.diagnostic.goto_next, { buffer = event.buf, desc = "Next diagnostic" })   
+    map("n", "gh", vim.lsp.buf.hover, { buffer = event.buf, desc = "Hover documentation" })
     map("n", "gs", function() vim.lsp.buf.signature_help() end, { buffer = event.buf, desc = "Show signature help"})
     map("n", "<leader>rn", function() vim.lsp.buf.rename() end, { buffer = event.buf, desc = "Rename symbol"})
     -- Format and Code Actions
     map({ "n", "x" }, "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, { buffer = event.buf, desc = "Format code"})
-    map({ "n", "x" }, "<leader>ca", function() require("fastaction").code_action() end, { buffer = event.buf, desc = "Trigger code action"})
+    map({ "n", "x" }, "<leader>ca", function() vim.lsp.buf.code_action() end, { buffer = event.buf, desc = "Code action" })
 end,
 })
 --}}}
