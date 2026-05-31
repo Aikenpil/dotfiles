@@ -8,12 +8,18 @@ map("n", "<A-/>", "<cmd>Telescope keymaps<CR>", { desc = "see all keymaps" })
 map('n', "<leader>e", function() require("oil").open() end, { noremap = true, silent = true, desc = "Oil toggle" })
 
 -- Save Quit eXit
-map("n", "<leader>s", ":w<CR>:e<CR>", { noremap = true, silent = true, desc = "Save and Reload" })
-map("x", "<leader>s", "<esc> :w<CR>:e<CR>", { noremap = true, silent = true, desc = "Save and Reload" })
-map("n", "<leader>q", ":q!<CR>", { noremap = true, silent = true, desc = "Quit without Saving" })
-map("x", "<leader>q", "<esc> :q!<CR>", { noremap = true, silent = true, desc = "Quit without Saving" })
-map("n", "<leader>x", ":x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
-map("x", "<leader>x", "<esc> :x<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
+map("n", "<leader>s", ":w<CR>:e<CR>", { noremap = true, desc = "Save and Reload" })
+map("x", "<leader>s", "<esc> :w<CR>:e<CR>", { noremap = true, desc = "Save and Reload" })
+map("n", "<leader>q", ":q!<CR>", { noremap = true, desc = "Quit without Saving" })
+map("x", "<leader>q", "<esc> :q!<CR>", { noremap = true, desc = "Quit without Saving" })
+map("n", "<leader>x", ":x<CR>", { noremap = true, desc = "Save and Quit" })
+map("x", "<leader>x", "<esc> :x<CR>", { noremap = true, desc = "Save and Quit" })
+
+-- Undotree
+map("n", "<leader>u", function()
+  vim.cmd("packadd nvim.undotree")
+  vim.cmd("Undotree")
+end, { desc = "UndoTree" })
 
 -- Telescope:
 map("n", "<leader>ff", function() require("telescope.builtin").find_files() end,  { noremap = true, silent = true, desc = "telescope find files" })

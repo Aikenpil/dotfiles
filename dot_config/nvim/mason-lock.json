@@ -1,8 +1,8 @@
 {
-  "clangd": "22.1.0",
+  "clangd": "22.1.6",
   "cmakelang": "0.6.13",
   "codelldb": "v1.12.2",
-  "rust-analyzer": "2026-05-11",
+  "rust-analyzer": "2026-05-25",
   "serve-d": "v0.7.6",
   "zls": "0.16.0"
 }
