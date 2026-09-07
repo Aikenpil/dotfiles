@@ -37,5 +37,5 @@ chezmoi init https://github.com/Aikenpil/dotfiles.git && chezmoi apply
   [blink.cmp](https://github.com/saghen/blink.cmp)
 - **telescope**: A fuzzy finder for Neovim that lets you search files, buffers, and more.
   [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- **nvim-treesitter-manager**: Parser manager for treesitter.
-  [nvim-treesitter-manager](https://github.com/romus204/tree-sitter-manager.nvim)
+- **nvim-treesitter**: Treesitter.
+  [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
